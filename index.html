@@ -568,6 +568,17 @@
         // Service Worker Registration (Removed due to blob: URL protocol restriction)
         // For PWA offline capabilities, service-worker.js would need to be a separate file
         // and registered from a standard HTTP/HTTPS URL.
+        if ("serviceWorker" in navigator) {
+          window.addEventListener("load", function() {
+          navigator.serviceWorker.register("/service-worker.js")
+          .then(function(reg) {
+            // Registration successful
+          })
+          .catch(function(err) {
+            // Registration failed
+          });
+      });
+}
     </script>
 </body>
 </html>
